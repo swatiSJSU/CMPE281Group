@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type"content="text/html; charset=UTF-8">
+  <title>starbucks application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="StarbucksMain_files/bootstrap.css">
+  <script src="StarbucksMain_files/jquery.js"></script>
+  <script src="StarbucksMain_files/bootstrap.js"></script>
+
+</head>
+<body>
+
+<div  style="background:Black" class="jumbotron text-center">
+<div class="pull-left ">
+ <img style="float:left" src="StarbucksMain_files/logo.png" class="img-circle" alt="Cinque Terre" width="200" height="100"> 
+</div>
+
+  <font color="#007E33" style="float:center"><h1>Starbucks</h1>
+  <p>Order your Drink!</p> 
+</div>
+</font>
+
+
+<h3> Order here!</h3>
+
+
+
+<!-- <div class="dropdown" id="coffee_drop">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select your Drink
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Caffe Americano</a></li>
+    <li><a href="#">Cappuccino</a></li>
+    <li><a href="#">Espresso</a></li>
+    <li><a href="#">Cafe Latte</a></li>
+    <li><a href="#">Cappuccino</a></li>
+    <li><a href="#">Cafe Mocha</a></li>
+  </ul>
+</div> 
+-->
+
+<div class="dropdown">
+<span class="caret"></span>
+<select id="coffee_name" name="Select your coffee">
+        <option value ="Caffee Americano"> Caffee Americano </option>
+        <option value = "Cappuccino"> Cappuccino </option>
+	<option value = "Espresso" > Espresso </option>
+	<option value = "Cafe Latte"> Cafe Latte </option>
+	<option value = "Cafe Mocha"> Cafe Mocha </option>	
+        
+</select> 
+</div>
+
+
+
+
+<div class="dropdown">
+<span class="caret"></span>
+<select id="mugsize" name="Select cup size">
+        <option value = "Small"> Small </option>
+        <option value = "Medium"> Medium </option>
+        <option value = "Large"> Large </option>
+    
+</select> 
+
+<!--</div>
+
+<br>
+ <div class="dropdown" id="mugsize_drop">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Drink Size
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Small</a></li>
+    <li><a href="#">Medium</a></li>
+    <li><a href="#">Large</a></li>
+
+  </ul>
+</div> 
+-->
+
+
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>San Jose</h3>
+
+
+<button id = "button1" type="button" onClick="redirect1()" class="btn btn-default">Order Drink</button>
+
+  </div>
+
+
+<div class="col-sm-4">
+      <h3>San Francisco</h3>
+<p>
+<button type="button" onClick="redirect2()" class="btn btn-default">Order Drink</button>
+
+</p>
+</div>
+
+    <div class="col-sm-4">
+      <h3>Palo Alto</h3>
+<button type="button" onClick="redirect3()" class="btn btn-default">Order Drink</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+function redirect3()
+{
+	   url = "http://ec2-54-153-14-217.us-west-1.compute.amazonaws.com:8090/sanjose/orders";
+	   var xhttp = new XMLHttpRequest();
+	   var coffee_name = document.getElementById('coffee_name').value;
+           var mug_size = document.getElementById('mugsize').value;
+	   data = JSON.stringify({"orderid": 1, "customerid": 1, "coffeename":coffee_name, "mugsize":mug_size});
+		
+    	   xhttp.open("POST", url, false);
+   	   xhttp.setRequestHeader("Content-type", "application/json");
+           xhttp.send(data);
+           var response = JSON.parse(xhttp.responseText);
+	   console.log(response);
+	   console.log(coffee_name);
+	   console.log(mug_size);
+	   //$.getJSON(url,function(data) { console.log("Hi success")});
+}
+
+function redirect2()
+{
+	   url = "http://ec2-54-153-14-217.us-west-1.compute.amazonaws.com:8090/sanjose/orders";
+	   var xhttp = new XMLHttpRequest();
+	   var coffee_name = document.getElementById('coffee_name').value;
+           var mug_size = document.getElementById('mugsize').value;
+	   data = JSON.stringify({"orderid": 1, "customerid": 1, "coffeename":coffee_name, "mugsize":mug_size});
+		
+    	   xhttp.open("POST", url, false);
+   	   xhttp.setRequestHeader("Content-type", "application/json");
+           xhttp.send(data);
+           var response = JSON.parse(xhttp.responseText);
+	   console.log(response);
+	   console.log(coffee_name);
+	   console.log(mug_size);
+	   //$.getJSON(url,function(data) { console.log("Hi success")});
+}
+
+function redirect1()
+{
+	   url = "http://ec2-54-153-14-217.us-west-1.compute.amazonaws.com:8090/sanjose/orders";
+	   var xhttp = new XMLHttpRequest();
+	   var coffee_name = document.getElementById('coffee_name').value;
+           var mug_size = document.getElementById('mugsize').value;
+	   data = JSON.stringify({"orderid": 1, "customerid": 1, "coffeename":coffee_name, "mugsize":mug_size});
+		
+    	   xhttp.open("POST", url, false);
+   	   xhttp.setRequestHeader("Content-type", "application/json");
+           xhttp.send(data);
+           var response = JSON.parse(xhttp.responseText);
+	   console.log(response);
+	   console.log(coffee_name);
+	   console.log(mug_size);
+	   var alert_res = response.message + ' of ' + mug_size + coffee_name;
+	   window.alert(alert_res);
+	   //$.getJSON(url,function(data) { console.log("Hi success")});
+}
+
+
+</script>
+
+
+</body>
+</html>
+
